@@ -1,5 +1,6 @@
 body {
     font-family: 'Russo One', sans-serif;
+    background-color: rgb(94, 165, 155);
 }
 
 input[type=submit] {
