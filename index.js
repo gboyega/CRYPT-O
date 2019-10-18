@@ -17,6 +17,7 @@ usd.addEventListener("click", () => {
     request.onload = () => {
         var data = JSON.parse(request.responseText);
         var coins = data.data.coins;
+        content.innerHTML = "";
         for (var i = 0; i < coins.length; i++) {
             displayCards(coins, currency, i);
         }
@@ -33,6 +34,7 @@ gbp.addEventListener("click", () => {
     request.onload = () => {
         var data = JSON.parse(request.responseText);
         var coins = data.data.coins;
+        content.innerHTML = "";
         for (var i = 0; i < coins.length; i++) {
             displayCards(coins, currency, i);
         }
@@ -41,37 +43,30 @@ gbp.addEventListener("click", () => {
     request.send();
 })
 
+btc.addEventListener("click", () => {
+    currency = "BTC";
+    url = "https://api.coinranking.com/v1/public/coins?base=BTC&timePeriod=24h";
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = () => {
+        var data = JSON.parse(request.responseText);
+        var coins = data.data.coins;
+        content.innerHTML = "";
+        for (var i = 0; i < coins.length; i++) {
+            displayCards(coins, currency, i);
+        }
 
-// currency = "USD";
-// url = "https://api.coinranking.com/v1/public/coins?base=USD&timePeriod=24h";
-// var request = new XMLHttpRequest();
-// request.open('GET', url);
-// request.onload = () => {
-//     var data = JSON.parse(request.responseText);
-//     var coins = data.data.coins;
-//     displayCards(coins, currency)
-// };
-// request.send();
-
-// const getData = (url) => {
-//     var request = new XMLHttpRequest();
-//     request.open('GET', url);
-//     request.onload = () => {
-//         var data = JSON.parse(request.responseText);
-//         coins = data.data.coins;
-//         console.log(coins);
-//     };
-//     request.send();
-
-// }
+    };
+    request.send();
+})
 
 const displayCards = (coins, currency, i) => {
     // content.innerHTML = "";
 
     // for (var i = 0; i < coins.length; i++) {
     var card =
-        `<div class="card col-sm-5" style="border: 3px ${coins[i].color}; margin:10px;">
-            <img src="${coins[i].iconUrl}" class="card-img-top" alt="${coins[i].name}">
+        `<div class="card col-sm-3 mx-sm-5" style="margin:20px; padding-left:0; padding-right:0;">
+            <img src="${coins[i].iconUrl}" class="card-img-top" alt="${coins[i].name}" style="height:300px;">
             <h4 class = "card-header">
                 ${coins[i].name}
             </h4>
@@ -82,7 +77,7 @@ const displayCards = (coins, currency, i) => {
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Rank: ${coins[i].rank}</li>
                 <li class="list-group-item">Price: ${coins[i].price} ${currency}</li>
-                <li class="list-group-item">24h change: ${coins[i].change}</li>
+                <li class="list-group-item">24h Price change: ${coins[i].change}%</li>
                 <li class="list-group-item">Market Cap: ${coins[i].marketCap}</li>
                 <li class="list-group-item">Circulation: ${coins[i].circulatingSupply}</li>
             </ul>
@@ -96,5 +91,3 @@ const displayCards = (coins, currency, i) => {
     // }
 
 }
-
-// next.addEventListener("click", () => {});
