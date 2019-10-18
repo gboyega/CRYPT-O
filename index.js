@@ -36,6 +36,7 @@ usd.addEventListener("click", () => {
 gbp.addEventListener("click", () => {
     currency = "GBP";
     url = "https://api.coinranking.com/v1/public/coins?base=GBP&timePeriod=24h";
+    var request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = () => {
         if (request.status >= 200 && request.status < 400) {
@@ -108,7 +109,7 @@ window.onload = () => {
 const displayCards = (coins, currency, i) => {
     var card =
         `<div class="card col-sm-3 mx-sm-5" style="margin:20px; padding-left:0; padding-right:0;">
-            <img src="${coins[i].iconUrl}" class="card-img-top" alt="${coins[i].name}" style="height:200px;">
+            <img src="${coins[i].iconUrl}" class="card-img-top" alt="${coins[i].name}" style="height:200px; margin:10px;">
             <h4 class = "card-header">
                 ${coins[i].name}
             </h4>
