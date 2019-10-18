@@ -15,31 +15,44 @@ usd.addEventListener("click", () => {
     var request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = () => {
-        var data = JSON.parse(request.responseText);
-        var coins = data.data.coins;
-        content.innerHTML = "";
-        for (var i = 0; i < coins.length; i++) {
-            displayCards(coins, currency, i);
-        }
-
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            var coins = data.data.coins;
+            content.innerHTML = "";
+            for (var i = 0; i < coins.length; i++) {
+                displayCards(coins, currency, i);
+            }
+        } else {
+            window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+        };
     };
+
+    request.onerror = () => {
+        window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+    }
     request.send();
 })
 
 gbp.addEventListener("click", () => {
     currency = "GBP";
     url = "https://api.coinranking.com/v1/public/coins?base=GBP&timePeriod=24h";
-    var request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = () => {
-        var data = JSON.parse(request.responseText);
-        var coins = data.data.coins;
-        content.innerHTML = "";
-        for (var i = 0; i < coins.length; i++) {
-            displayCards(coins, currency, i);
-        }
-
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            var coins = data.data.coins;
+            content.innerHTML = "";
+            for (var i = 0; i < coins.length; i++) {
+                displayCards(coins, currency, i);
+            }
+        } else {
+            window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+        };
     };
+
+    request.onerror = () => {
+        window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+    }
     request.send();
 })
 
@@ -49,17 +62,20 @@ btc.addEventListener("click", () => {
     var request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = () => {
-        var data = JSON.parse(request.responseText);
-        var coins = data.data.coins;
-        content.innerHTML = "";
-        for (var i = 0; i < coins.length; i++) {
-            displayCards(coins, currency, i);
-        }
-
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            var coins = data.data.coins;
+            content.innerHTML = "";
+            for (var i = 0; i < coins.length; i++) {
+                displayCards(coins, currency, i);
+            }
+        } else {
+            window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+        };
     };
 
     request.onerror = () => {
-        alert("Connection Error. Please refresh or try again in a few moments");
+        window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
     }
 
     request.send();
@@ -71,21 +87,25 @@ window.onload = () => {
     var request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = () => {
-        var data = JSON.parse(request.responseText);
-        var coins = data.data.coins;
-        content.innerHTML = "";
-        for (var i = 0; i < coins.length; i++) {
-            displayCards(coins, currency, i);
-        }
-
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            var coins = data.data.coins;
+            content.innerHTML = "";
+            for (var i = 0; i < coins.length; i++) {
+                displayCards(coins, currency, i);
+            }
+        } else {
+            window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+        };
     };
+
+    request.onerror = () => {
+        window.alert("There's a problem contacting the server, Please refresh or try again in a few moments.");
+    }
     request.send();
 }
 
 const displayCards = (coins, currency, i) => {
-    // content.innerHTML = "";
-
-    // for (var i = 0; i < coins.length; i++) {
     var card =
         `<div class="card col-sm-3 mx-sm-5" style="margin:20px; padding-left:0; padding-right:0;">
             <img src="${coins[i].iconUrl}" class="card-img-top" alt="${coins[i].name}" style="height:200px;">
