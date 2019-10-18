@@ -128,8 +128,4 @@ const displayCards = (coins, currency, i) => {
             </div>
         </div>`
     content.insertAdjacentHTML('beforeend', card);
-    console.log(i);
-    console.log(card);
-    // }
-
 }
