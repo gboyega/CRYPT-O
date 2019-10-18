@@ -5,3 +5,7 @@ body {
 input[type=submit] {
     margin: 10px;
 }
+
+h1 {
+    line-height: 50px;
+}

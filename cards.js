@@ -1,4 +1,4 @@
-card = `<div class="card col-sm-4" style="border: thin ${coins[i].color};">
+var card = `<div class="card col-sm-5" style="border: thin ${coins[i].color};">
   <img src="${coins[i].iconUrl}" class="card-img-top" alt="${coins[i].name}">
   <h4 class = "card-header">
     ${coins[i].name}
