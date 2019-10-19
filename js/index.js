@@ -125,7 +125,7 @@ const displayCards = (coins, currency, i) => {
                 <li class="list-group-item">Circulation: ${coins[i].circulatingSupply}</li>
             </ul>
             <div class="card-footer text-muted">
-                ${coins[i].slug}
+                Data from <a href="coinranking.com" class="card-link text-success" target="_blank">Coinranking</a>
             </div>
         </div>`
     content.insertAdjacentHTML('beforeend', card);
