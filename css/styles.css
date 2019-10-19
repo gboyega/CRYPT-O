@@ -1,0 +1,12 @@
+body {
+    font-family: 'Russo One', sans-serif;
+    background-color: rgb(94, 165, 155);
+}
+
+input[type=submit] {
+    margin: 10px;
+}
+
+h1 {
+    line-height: 50px;
+}
